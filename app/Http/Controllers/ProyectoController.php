@@ -16,6 +16,14 @@ class ProyectoController extends Controller
         return $pdf->download('informe_proyectos.pdf');
     }
 
+    public function generarPDFProyecto($id)
+    {
+        $proyecto = Proyecto::findOrFail($id);
+        $fecha = now()->format('d-m-Y');
+        $pdf = Pdf::loadView('proyectos.pdf-proyecto', compact('proyecto', 'fecha'));
+        return $pdf->download('proyecto_' . $proyecto->id . '_' . $fecha . '.pdf');
+    }
+
     public function index()
     {
         $proyectos = Proyecto::all();

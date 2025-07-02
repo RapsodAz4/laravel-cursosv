@@ -13,4 +13,7 @@ Route::resource('proyectos', ProyectoController::class);
 // Ruta adicional para generar PDF
 Route::get('/proyectos/informe/pdf', [ProyectoController::class, 'generarPDF'])->name('proyectos.pdf');
 
+// Ruta para generar PDF de un proyecto específico
+Route::get('/proyectos/{id}/pdf', [ProyectoController::class, 'generarPDFProyecto'])->name('proyectos.pdf.proyecto');
+
 
